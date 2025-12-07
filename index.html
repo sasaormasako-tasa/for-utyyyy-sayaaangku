@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gombalan Buat Utyy 💗</title>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: linear-gradient(135deg, #ffd2ec, #ffe7ff);
+      overflow: hidden;
+    }
+
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(255, 0, 128, 0.2);
+      text-align: center;
+      width: 320px;
+      position: relative;
+      animation: pop 0.6s ease;
+    }
+
+    @keyframes pop {
+      0% { transform: scale(0.6); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .heartRain span {
+      position: absolute;
+      top: -10px;
+      animation: fall linear infinite;
+      color: #ff3d8e;
+      font-size: 20px;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(110vh); opacity: 0; }
+    }
+
+    #text {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: #ff2f7d;
+      line-height: 1.5;
+    }
+
+    button {
+      padding: 10px 18px;
+      border: none;
+      border-radius: 12px;
+      background: #ff4d98;
+      color: white;
+      font-size: 15px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      background: #ff2f7d;
+      transform: translateY(-3px);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="heartRain" id="hearts"></div>
+
+  <div class="card">
+    <div id="text"></div>
+    <button onclick="copyText()">Copy Buat Utyy 💗</button>
+  </div>
+
+  <script>
+    // Gombalan khusus Utyy 💗
+    const gombal = [
+      "Utyy… kita emang temenan, tapi kok rasanya aku sayang sama kamu kebangetan ya 😭💗✨",
+      "Utyy, parah… tiap kamu muncul tuh aku ngakak, tapi dalam hati aku malah meleleh 😳🔥",
+      "Jujur Utyy… aku tuh suka vibes kita. Temenan tapi saltinya kaya pasangan 😩💞",
+      "Utyy, kamu tuh temen tapi efeknya ke aku tuh bukan efek temenan 😵‍💘 kaya… lebih.",
+      "Kamu sadar gak sih, Utyy? Kita tuh cuma chat biasa tapi chemistry-nya udah kaya film romansa 😭💗",
+      "Susah dijelasin Utyy… tapi tiap aku chat kamu tuh rasanya adem, lucu, sama sedikit bahaya 😳🤭",
+      "Kalo temenan biasa gak bikin jantung deg-degan gini kan? Tapi Utyy beda… kamu upgrade levelnya 😩💞",
+      "Utyy, aku sayang kok… sayang tapi pake tawa, pake becanda, pake salting, paket lengkap 😘✨",
+      "Gak tau sih Utyy… temenan sama kamu tuh nyamannya beda. Sampe aku mikir, ini normal gak sih 😳💗",
+      "Yang jelas Utyy, aku seneng banget ada kamu… meski cuma virtual, hatinya tetep nyangkut 😭🔥",
+    ];
+
+    let index = 0;
+    let charIndex = 0;
+
+    function typeEffect() {
+      const textDiv = document.getElementById("text");
+
+      if (charIndex < gombal[index].length) {
+        textDiv.innerHTML += gombal[index].charAt(charIndex);
+        charIndex++;
+        setTimeout(typeEffect, 85);
+      } else {
+        setTimeout(() => {
+          index = (index + 1) % gombal.length;
+          textDiv.innerHTML = "";
+          charIndex = 0;
+          typeEffect();
+        }, 2700);
+      }
+    }
+
+    typeEffect();
+
+    function copyText() {
+      navigator.clipboard.writeText(document.getElementById("text").innerText);
+      alert("Udah aku salinin yaa, buat Utyy~ 💗🤭");
+    }
+
+    // Heart Rain
+    function createHearts() {
+      const container = document.getElementById("hearts");
+      const heart = document.createElement("span");
+      heart.innerHTML = "💖";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = 3 + Math.random() * 3 + "s";
+      container.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 5000);
+    }
+    setInterval(createHearts, 300);
+  </script>
+</body>
+</html>
